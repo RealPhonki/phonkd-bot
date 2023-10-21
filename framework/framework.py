@@ -1,7 +1,6 @@
 # external imports
 import discord
 from discord.ext import commands
-import platform
 import asyncio
 import json
 import sys
@@ -31,23 +30,28 @@ class DiscordAPIHandler():
         client.logger = logger()
         return client
 
-    async def main(self) -> None:
-        async with self.client:
-            await self.client.start(self.config["token"])
-
     async def load(self) -> None:
-        # for every python file in the cogs folder
-        for filename in os.listdir("./cogs"):
+        path = os.path.realpath(f"{os.path.dirname(__file__)}/cogs")
+
+        if not os.path.isdir(path):
+            sys.exit('"cogs" directory does not exist')
+
+        for filename in os.listdir(path):
             if filename.endswith(".py"):
                 extension = filename[:-3]
                 try:
                     # load the python extension and print a cool message
-                    await self.client.load_extension(f"cogs.{extension}")
+                    await self.client.load_extension(f"framework.cogs.{extension}")
                     self.client.logger.info(f"Loaded extension '{extension}'")
                 except Exception as e:
                     # print the exception if there is one
                     exception = f"{type(e).__name__}: {e}"
                     self.client.logger.error(f"Failed to load extension {extension}\n{exception}")
+
+    async def main(self) -> None:
+        async with self.client:
+            await self.load()
+            await self.client.start(self.config["token"])
 
     """ Framework methods """
 
