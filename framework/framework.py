@@ -62,7 +62,9 @@ class DiscordAPIHandler():
     """ Framework methods """
     def call_on_message(self, function: callable) -> None:
         """
-        Takes in a function that will be called whenever a message is received
+        Calls on your function whenever a message is recieved and passes in a "message" object.
+        To find out about the propeerties of message objects you can visit this link:
+        https://discordpy.readthedocs.io/en/latest/api.html#message
         """
         self.client.callables["on_message"] = function
 
