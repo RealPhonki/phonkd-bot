@@ -14,7 +14,6 @@ class DiscordAPIHandler():
         # attributes
         self.config = self.load_config()
         self.client = self.load_client()
-        self.callables = {}
 
     """ Initializer methods """
     def load_config(self) -> dict:
@@ -30,6 +29,7 @@ class DiscordAPIHandler():
         # create a discord bot client and return it
         client = commands.Bot(command_prefix=commands.when_mentioned_or(self.config["prefix"]), intents=discord.Intents.all())
         client.logger = logger()
+        client.callables = {"on_message": None}
         return client
 
     async def load(self) -> None:
@@ -64,7 +64,7 @@ class DiscordAPIHandler():
         """
         Takes in a function that will be called whenever a message is received
         """
-        self.callables["on_message"] = function
+        self.client.callables["on_message"] = function
 
     def activate_bot(self) -> None:
         """
