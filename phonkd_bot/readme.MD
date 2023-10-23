@@ -1,4 +1,14 @@
-##Creating the Bot
+# Discord Bot Framework
+
+> A framework that makes discord bots easy
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Installation
+
+Not completed
+
+## Creating the Bot
 1. Go to discord.com/developer/applications
 2. Click `New Application`
 3. Give the bot a name, agree to the terms, then click `Create`
@@ -13,3 +23,11 @@
 12. Select the server to add the bot to
 13. Make sure `Administrator` is checked and click `Authorize`
 14. Do the captcha (if one appears) and close the window once you see `"Success!"` on your screen
+
+## Usage Example
+
+Not completed
+
+## Contributing
+
+Please don't contribute, I don't have time to review code changes

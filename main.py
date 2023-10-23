@@ -1,4 +1,4 @@
-from framework.framework import api_handler
+from phonkd_bot.bot import api_handler
 
 def on_message(message):
     return 532
