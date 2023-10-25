@@ -1,2 +1,1 @@
-from .bot import DiscordAPIHandler
-api_handler = DiscordAPIHandler()
+from .bot import DiscordBot, message

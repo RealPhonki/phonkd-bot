@@ -1,4 +1,10 @@
+# import stuff
 import phonkd_bot
 
-def on_message(message):
-    return "hi"
+bot = phonkd_bot.DiscordBot()
+
+def on_message(message: phonkd_bot.message):
+    return "Hello"
+
+bot.call_on_message(on_message)
+bot.start()

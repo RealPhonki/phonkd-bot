@@ -12,7 +12,7 @@ class OnMessage(commands.Cog):
     
         if message.author == self.client.user:
             return
-    
+
         try:
             response = self.client.callables["on_message"](message)
             await message.channel.send(response)
