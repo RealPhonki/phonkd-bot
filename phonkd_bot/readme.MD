@@ -27,7 +27,45 @@ Not completed
 
 ## Usage Example
 
-Not completed
+### Importing the bot
+```python
+import phonkd_bot
+```
+
+### Creating a bot instance
+```python
+phonkd_bot.DiscordBot()
+```
+
+### Responding to messages
+- Adding the `phonkd_bot.message` type hint to the `message` parameter allows your code editor to autocomplete attributes of the discord `Message` object.
+```python
+def on_message(message: phonkd_bot.message):
+    return "Hello!"
+
+bot.call_on_message(on_message)
+```
+
+### Running the bot
+```python
+bot.start()
+```
+
+### Example Script
+
+```python
+import phonkd_bot
+
+bot = phonkd_bot.DiscordBot()
+
+def on_message(message: phonkd_bot.message):
+    return "Hello!"
+
+bot.call_on_message(on_message)
+bot.start()
+```
+
+![](hello_example.png)
 
 ## Contributing
 
