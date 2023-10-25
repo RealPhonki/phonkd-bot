@@ -1,35 +1,55 @@
 # external imports
 import discord
 from discord.ext import commands
+import importlib
 import asyncio
+import inspect
 import json
 import sys
 import os
 
 # local imports
-from framework.bot_logger import logger
+from phonkd_bot.logger import logger
 
 class DiscordAPIHandler():
     def __init__(self) -> None:
+        # aliases
+        self.CALLER_FILE = self.get_caller_file()
+        self.CALLER_DIRECTORY = self.get_caller_directory(self.CALLER_FILE)
+
         # attributes
-        self.config = self.load_config()
+        self.config = self.load_config_file(self.CALLER_DIRECTORY)
         self.client = self.load_client()
 
+        # initialize
+        asyncio.run(self.main())
+
     """ Initializer methods """
-    def load_config(self) -> dict:
-        # check if config.json exists
-        if not os.path.isfile(f"{os.path.realpath(os.path.dirname(__file__))}/config.json"):
-            sys.exit('"config.json" file not found')
-        # open and return the contents
+    def get_caller_file(self):
+        fname = inspect.currentframe()
+        while fname.f_back:
+            fname = fname.f_back
+        caller_file = fname.f_globals['__file__']
+        return caller_file
+
+    def get_caller_directory(self, caller_file: str):
+        caller_directory = os.path.dirname(os.path.abspath(caller_file))
+        return caller_directory
+
+    def load_config_file(self, directory: str) -> dict:
+        config_path = directory + "/config.json"
+        if not os.path.isfile(config_path):
+            with open(config_path, 'w') as config:
+                sys.exit("Config file not found")
         else:
-            with open(f"{os.path.realpath(os.path.dirname(__file__))}/config.json") as file:
+            with open(config_path) as file:
                 return json.load(file)
 
     def load_client(self) -> commands.Bot:
         # create a discord bot client and return it
         client = commands.Bot(command_prefix=commands.when_mentioned_or(self.config["prefix"]), intents=discord.Intents.all())
         client.logger = logger()
-        client.callables = {"on_message": None}
+        client.callables = {"on_message": self.get_caller_function('on_message')}
         return client
 
     async def load(self) -> None:
@@ -47,31 +67,23 @@ class DiscordAPIHandler():
                 extension = filename[:-3]
                 try:
                     # load the cog and log the information
-                    await self.client.load_extension(f"framework.cogs.{extension}")
+                    await self.client.load_extension(f"phonkd_bot.cogs.{extension}")
                     self.client.logger.info(f"Loaded extension '{extension}'")
                 except Exception as e:
                     # print the exception if there is one
                     exception = f"{type(e).__name__}: {e}"
                     self.client.logger.error(f"Failed to load extension {extension}\n{exception}")
 
+    def get_caller_function(self, function_name: str):
+        try:
+            caller_module = importlib.import_module(self.CALLER_FILE)
+            function = getattr(caller_module, function_name)
+            return function
+        except (ImportError, AttributeError):
+            return None
+
+
     async def main(self) -> None:
         async with self.client:
             await self.load()
             await self.client.start(self.config["token"])
-
-    """ Framework methods """
-    def call_on_message(self, function: callable) -> None:
-        """
-        Calls on your function whenever a message is recieved and passes in a "message" object.
-        To find out about the propeerties of message objects you can visit this link:
-        https://discordpy.readthedocs.io/en/latest/api.html#message
-        """
-        self.client.callables["on_message"] = function
-
-    def activate_bot(self) -> None:
-        """
-        Activates the bot
-        """
-        asyncio.run(self.main())
-
-api_handler = DiscordAPIHandler()
