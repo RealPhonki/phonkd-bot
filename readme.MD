@@ -7,7 +7,7 @@
 ██║     ██║  ██║╚██████╔╝██║ ╚████║██║  ██╗██████╔╝    ██████╔╝╚██████╔╝   ██║   
 ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝╚═════╝     ╚═════╝  ╚═════╝    ╚═╝   
 ---------------------------------------------------------------
-A discord bot framework that makes discord bot programming suprisingly easy
+A framework that makes discord bot programming easy
 </pre>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -103,7 +103,7 @@ bot.logger.critical("critical error message")
 
 This is the result.
 
-![[]](https://i.imgur.com/wiIKZEQ.png)
+![image of terminal containing logged information](https://i.imgur.com/wiIKZEQ.png)
 
 ### Example Discord Bot Script
 
@@ -121,7 +121,7 @@ bot.start()
 
 This is the result.
 
-![Example Image](https://i.imgur.com/4hcMWHE.png)
+![image of discord bot saying hello](https://i.imgur.com/4hcMWHE.png)
 
 ## Meta
 Gmail - phonkibusiness@gmail.com
