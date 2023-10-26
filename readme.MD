@@ -19,7 +19,7 @@ A discord bot framework that makes discord bots easy
 Not completed
 
 ## Creating a Discord Bot
-1. Go to discord.com/developer/applications
+1. Go to discord.com/developers/applications
 2. Click `New Application`
 3. Give the bot a name, agree to the terms, then click `Create`
 4. (optional) give the bot a profile picture, tags, and or a description, then click `Save Changes`
@@ -36,24 +36,31 @@ Not completed
 15. Do the captcha (if one appears) and close the window once you see `"Success!"` on your screen
 
 ## Dependencies
-Create a file named `config.json` in the same directory as your main file. The contents of the file should look like this.
+Create a file named `config.json` in the same directory as your main file. You will need to put your bot token (from discord.com/developers/applications) into the file.
+
 ```json
 {
     "prefix": "/",
-    "token": "YOUR TOKEN HERE"
+    "token": "YOUR BOT OKEN HERE"
 }
 ```
 
 ## Usage Example
 
 ### Importing the bot
+
+You will need to put this at the top of your code to access the framework.
+
 ```python
 import phonkd_bot
 ```
 
 ### Creating a bot instance
+
+You will need to create an instance of the `DiscordBot` class to access the frameworks's functionaility.
+
 ```python
-phonkd_bot.DiscordBot()
+bot = phonkd_bot.DiscordBot()
 ```
 
 ### Responding to messages
@@ -67,10 +74,36 @@ def on_message(message: phonkd_bot.message):
 bot.call_on_message(on_message)
 ```
 
-### Running the bot
+### Activating the bot
+
+This should go at the bottom of your code
+
 ```python
 bot.start()
 ```
+
+### Logging Information
+
+The `DiscordBot` class has a sub class called `logger`. The `logger` class has multiple methods that will help you debug or catch errors with your script. These include:
+- `logger.debug`
+- `logger.info`
+- `logger.warning`
+- `logger.error`
+- `logger.critical`
+
+Here is an example script.
+
+```python
+bot.logger.debug("debug message")
+bot.logger.info("info message")
+bot.logger.warning("warning message")
+bot.logger.error("error message")
+bot.logger.critical("critical error message")
+```
+
+This is the result.
+
+![[]](https://i.imgur.com/wiIKZEQ.png)
 
 ### Example Script
 
@@ -86,18 +119,17 @@ bot.call_on_message(on_message)
 bot.start()
 ```
 
-This is the resulting bot.
-![](hello_example.png)
+This is the result.
+
+![Example Image](https://i.imgur.com/4hcMWHE.png)
 
 ## Meta
-Phonki - phonkibusiness@gmail.com
+Gmail - phonkibusiness@gmail.com
 
-Github Profile - https://github.com/RealPhonki
+Github - https://github.com/RealPhonki
+
+Find me on the Python Discord Server - https://discord.com/invite/python
 
 Discord Tag - `Phonki#0090`
 
-Distributed under the MIT license. See `LICENSE` for more information.
-
-## Contributing
-
-Please don't contribute, I don't have time to review code changes
+Code distributed under the MIT license. See `LICENSE` for more information.

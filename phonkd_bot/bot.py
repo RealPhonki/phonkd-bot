@@ -15,8 +15,8 @@ from .api_handler import DiscordAPIHandler
 class DiscordBot:
     def __init__(self) -> None:
         self.api_handler = DiscordAPIHandler()
-    
-    """ User Methods """
+        self.logger = self.api_handler.LOGGER
+
     def start(self) -> None:
         """
         Starts the bot client and loads dependencies.
