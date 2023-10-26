@@ -19,7 +19,7 @@ A framework that makes discord bot programming easy
 Run this command in your terminal
 
 ```shell
-pip3 install phonkd_bots
+pip3 install phonkd_bot
 ```
 
 Create a file named `config.json` in the same directory has your script. Copy and paste your bot token (from discord.com/developers) into the file.
