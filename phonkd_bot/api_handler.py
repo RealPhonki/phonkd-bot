@@ -51,9 +51,6 @@ class DiscordAPIHandler():
         # get the path of hte current file
         path = os.path.realpath(f"{os.path.dirname(__file__)}/cogs")
 
-        if not os.path.isdir(path):
-            sys.exit('"cogs" directory does not exist')
-
         # loop through every python file in the cogs directory
         for filename in os.listdir(path):
             if filename.endswith(".py"):

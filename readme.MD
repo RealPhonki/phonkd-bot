@@ -14,9 +14,21 @@ A framework that makes discord bot programming easy
 
 </div>
 
-## Installation
+## Installation and setup
 
-Not completed
+Run this command in your terminal
+
+```shell
+pip3 install phonkd_bots
+```
+
+Create a file named `config.json` in the same directory has your script. Copy and paste your bot token (from discord.com/developers) into the file.
+```json
+{
+    "prefix": "/",
+    "token": "YOUR BOT OKEN HERE"
+}
+```
 
 ## Creating a Discord Bot
 1. Go to discord.com/developers/applications
@@ -34,16 +46,6 @@ Not completed
 13. Select the server to add the bot to and click `Continue`
 14. Make sure `Administrator` is checked and click `Authorize`
 15. Do the captcha (if one appears) and close the window once you see `"Success!"` on your screen
-
-## Dependencies
-Create a file named `config.json` in the same directory as your main file. You will need to put your bot token (from discord.com/developers/applications) into the file.
-
-```json
-{
-    "prefix": "/",
-    "token": "YOUR BOT OKEN HERE"
-}
-```
 
 ## Usage Example
 
