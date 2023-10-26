@@ -57,7 +57,7 @@ import phonkd_bot
 
 ### Creating a bot instance
 
-You will need to create an instance of the `DiscordBot` class to access the frameworks's functionaility.
+You will need to create an instance of the `DiscordBot` class to make a discord bot.
 
 ```python
 bot = phonkd_bot.DiscordBot()
@@ -66,7 +66,7 @@ bot = phonkd_bot.DiscordBot()
 ### Responding to messages
 - Adding the `phonkd_bot.message` type hint to the `message` parameter allows your code editor to autocomplete attributes of the discord `Message` object.
 - Passing a function into the `call_on_message` method tells the framework where to get a response when a message is received.
-- The framework will pass the discord.Message object as a paramater to the function provided to it.
+- The framework will pass a discord.Message object as a paramater to the function provided to `call_on_Message`.
 ```python
 def on_message(message: phonkd_bot.message):
     return "Hello!"
@@ -76,7 +76,7 @@ bot.call_on_message(on_message)
 
 ### Activating the bot
 
-This should go at the bottom of your code
+This should go at the bottom of your code.
 
 ```python
 bot.start()
@@ -84,7 +84,7 @@ bot.start()
 
 ### Logging Information
 
-The `DiscordBot` class has a sub class called `logger`. The `logger` class has multiple methods that will help you debug or catch errors with your script. These include:
+The `DiscordBot` class has a sub class called `logger`. The `logger` class has multiple methods that will help you debug or catch errors in your script. These methods are:
 - `logger.debug`
 - `logger.info`
 - `logger.warning`
@@ -105,7 +105,7 @@ This is the result.
 
 ![[]](https://i.imgur.com/wiIKZEQ.png)
 
-### Example Script
+### Example Discord Bot Script
 
 ```python
 import phonkd_bot
