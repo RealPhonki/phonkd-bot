@@ -7,10 +7,11 @@
 ██║     ██║  ██║╚██████╔╝██║ ╚████║██║  ██╗██████╔╝    ██████╔╝╚██████╔╝   ██║   
 ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝╚═════╝     ╚═════╝  ╚═════╝    ╚═╝   
 ---------------------------------------------------------------
+A discord bot framework that makes discord bots easy
 </pre>
 
-> A discord bot framework that makes discord bots easy
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 </div>
 
 ## Installation
@@ -72,6 +73,7 @@ bot.start()
 ```
 
 ### Example Script
+
 ```python
 import phonkd_bot
 
@@ -89,8 +91,11 @@ This is the resulting bot.
 
 ## Meta
 Phonki - phonkibusiness@gmail.com
+
 Github Profile - https://github.com/RealPhonki
+
 Discord Tag - `Phonki#0090`
+
 Distributed under the MIT license. See `LICENSE` for more information.
 
 ## Contributing
