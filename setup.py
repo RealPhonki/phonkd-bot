@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.6'
+VERSION = '0.0.9'
 DESCRIPTION = 'A framework that makes discord bot programming easy'
 
 with open("README.md", "r") as f:
