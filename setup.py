@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.10'
+VERSION = '0.0.11'
 DESCRIPTION = 'A framework that makes discord bot programming easy'
 
 with open("README.md", "r") as f:
@@ -28,3 +28,12 @@ setup(
         "Operating System :: Microsoft :: Windows",
     ]
 )
+
+"""
+----- build commands -----
+
+(delete all build files first)
+
+python3 setup.py sdist bdist_wheel
+twine upload dist/* --verbose
+"""

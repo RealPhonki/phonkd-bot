@@ -16,13 +16,13 @@ A framework that makes discord bot programming easy
 
 ## Installation and setup
 
-Run this command in your terminal
+Run this command in your terminal, it is going to download the framework along with the [discord](https://discordpy.readthedocs.io/en/stable/api.html) and [asyncio](https://docs.python.org/3/library/asyncio.html) libraries.
 
 ```shell
 pip3 install phonkd_bot
 ```
 
-Create a file named `config.json` in the same directory has your script. Copy and paste your bot token (from discord.com/developers) into the file.
+Create a file named `config.json` in the same directory has your script. Copy and paste your bot token (from discord.com/developers) into the file. The prefix field is optional.
 ```json
 {
     "prefix": "/",
@@ -51,24 +51,22 @@ Create a file named `config.json` in the same directory has your script. Copy an
 
 ### Importing the bot
 
-You will need to put this at the top of your code to access the framework.
-
 ```python
 import phonkd_bot
 ```
 
 ### Creating a bot instance
 
-You will need to create an instance of the `DiscordBot` class to make a discord bot.
+You will need to create an instance of the `DiscordBot` class to make the discord bot.
 
 ```python
 bot = phonkd_bot.DiscordBot()
 ```
 
 ### Responding to messages
-- Adding the `phonkd_bot.message` type hint to the `message` parameter allows your code editor to autocomplete attributes of the discord `Message` object.
-- Passing a function into the `call_on_message` method tells the framework where to get a response when a message is received.
-- The framework will pass a discord.Message object as a paramater to the function provided to `call_on_Message`.
+- Adding the `phonkd_bot.message` type hint to the `message` parameter allows your code editor to autocomplete attributes of the discord [`Message`](https://discordpy.readthedocs.io/en/stable/api.html#discord.Message) object.
+- The function passed into `call_on_message` will be called when a the bot receives a message. The return value is what the bot will respond with.
+- The framework will pass a discord.Message object as a paramater to the function provided to `call_on_message`.
 ```python
 def on_message(message: phonkd_bot.message):
     return "Hello!"
@@ -78,8 +76,6 @@ bot.call_on_message(on_message)
 
 ### Activating the bot
 
-This should go at the bottom of your code.
-
 ```python
 bot.start()
 ```
@@ -87,7 +83,6 @@ bot.start()
 ### Logging Information
 
 The `DiscordBot` class has a sub class called `logger`. The `logger` class has multiple methods that will help you debug or catch errors in your script. These methods are:
-- `logger.debug`
 - `logger.info`
 - `logger.warning`
 - `logger.error`
@@ -96,7 +91,10 @@ The `DiscordBot` class has a sub class called `logger`. The `logger` class has m
 Here is an example script.
 
 ```python
-bot.logger.debug("debug message")
+import phonkd_bot
+
+bot = DiscordBot()
+
 bot.logger.info("info message")
 bot.logger.warning("warning message")
 bot.logger.error("error message")

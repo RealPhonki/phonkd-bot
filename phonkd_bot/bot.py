@@ -6,8 +6,8 @@ from seeing internal methods that may be confusing
 # external imports
 from collections.abc import Callable
 from discord import Message as message
+from inspect import signature
 import asyncio
-import sys
 
 # local import
 from .api_handler import DiscordAPIHandler
@@ -27,8 +27,16 @@ class DiscordBot:
         """
         The bot will call the parameter passed into this method whenever it receives a message
         """
-        if callable(function):
-            self.api_handler.client.callables["on_message"] = function
-        else:
-            self.api_handler.LOGGER.error(f"Invalid function '{function}'")
-            sys.exit()
+
+        # check if the object passed is a function
+        if not callable(function):
+            self.api_handler.LOGGER.warning(f"Invalid function '{function}'")
+            return
+
+        # check if the function only has 1 parameter
+        parameters = signature(function).parameters
+        if len(parameters) != 1:
+            self.api_handler.LOGGER.warning(f"Invalid number of parameters in {function}, please only specify one.")
+            return
+
+        self.api_handler.client.callables["on_message"] = function

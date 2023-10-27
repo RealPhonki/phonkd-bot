@@ -35,14 +35,25 @@ class DiscordAPIHandler():
     def load_config_file(self, directory: str) -> dict:
         config_path = directory + "/config.json"
         if not os.path.isfile(config_path):
-            self.LOGGER.error(f"Failed to locate config.json, please create it and try again")
+            self.LOGGER.error(f"Failed to locate config.json, please create the file and try again")
             sys.exit()
         else:
-            with open(config_path) as file:
-                return json.load(file)
+            try:
+                with open(config_path) as file:
+                    config_data = json.load(file)
+            except Exception as e:
+                self.LOGGER.error(f"{type(e).__name__}: {e}")
+                sys.exit()
+        
+        if "token" not in config_data:
+            self.LOGGER.error(f"config file missing 'token' value")
+            sys.exit()
+
+        return config_data
 
     def load_client(self) -> commands.Bot:
-        client = commands.Bot(command_prefix=commands.when_mentioned_or(self.config["prefix"]), intents=discord.Intents.all())
+        prefix = "/" if "prefix" not in self.config else self.config["prefix"]
+        client = commands.Bot(command_prefix=commands.when_mentioned_or(prefix), intents=discord.Intents.all())
         client.logger = self.LOGGER
         client.callables = {}
         return client
@@ -62,7 +73,7 @@ class DiscordAPIHandler():
                 except Exception as e:
                     # print the exception if there is one
                     exception = f"{type(e).__name__}: {e}"
-                    self.LOGGER.error(f"Failed to load extension {extension}\n{exception}")
+                    self.LOGGER.warning(f"Failed to load extension {extension}\n{exception}")
 
     async def main(self) -> None:
         async with self.client:
