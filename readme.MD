@@ -16,13 +16,13 @@ A framework that makes discord bot programming easy
 
 ## Installation and setup
 
-Run this command in your terminal, it is going to download the framework along with the [discord](https://discordpy.readthedocs.io/en/stable/api.html) and [asyncio](https://docs.python.org/3/library/asyncio.html) libraries.
+Run this command in your terminal, it will download the framework along with the [discord](https://discordpy.readthedocs.io/en/stable/api.html) and [asyncio](https://docs.python.org/3/library/asyncio.html) libraries.
 
 ```shell
 pip3 install phonkd_bot
 ```
 
-Create a file named `config.json` in the same directory has your script. Copy and paste your bot token (from discord.com/developers) into the file. The prefix field is optional.
+Create a file named `config.json` in the same directory as your script. Copy and paste your bot token (from [discord.com/developers](https://discord.com/developers/applications)) into the file. The prefix field is optional.
 ```json
 {
     "prefix": "/",
@@ -31,7 +31,7 @@ Create a file named `config.json` in the same directory has your script. Copy an
 ```
 
 ## Creating a Discord Bot
-1. Go to discord.com/developers/applications
+1. Go to [discord.com/developers/applications](https://discord.com/developers/applications)
 2. Click `New Application`
 3. Give the bot a name, agree to the terms, then click `Create`
 4. (optional) give the bot a profile picture, tags, and or a description, then click `Save Changes`
@@ -56,8 +56,6 @@ import phonkd_bot
 ```
 
 ### Creating a bot instance
-
-You will need to create an instance of the `DiscordBot` class to make the discord bot.
 
 ```python
 bot = phonkd_bot.DiscordBot()
