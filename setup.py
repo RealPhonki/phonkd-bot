@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.9'
+VERSION = '0.0.10'
 DESCRIPTION = 'A framework that makes discord bot programming easy'
 
 with open("README.md", "r") as f:
@@ -16,6 +16,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=find_packages(),
+    include_package_data=True,
     install_requires=["discord", "asyncio"],
     keywords=['python', 'discord'],
     classifiers=[
