@@ -26,7 +26,7 @@ Create a file named `config.json` in the same directory as your script. Copy and
 ```json
 {
     "prefix": "/",
-    "token": "YOUR BOT OKEN HERE"
+    "token": "YOUR BOT TOKEN HERE"
 }
 ```
 
@@ -62,7 +62,7 @@ bot = phonkd_bot.DiscordBot()
 ```
 
 ### Responding to messages
-- Adding the `phonkd_bot.message` type hint to the `message` parameter allows your code editor to autocomplete attributes of the discord [`Message`](https://discordpy.readthedocs.io/en/stable/api.html#discord.Message) object.
+- Adding the `phonkd_bot.message` type hint to the `message` parameter allows your code editor to autocomplete attributes of the discord [`Message`](https://discordpy.readthedocs.io/en/stable/api.html#discord.Message) object, see their [documentation](https://discordpy.readthedocs.io/en/stable/api.html#discord.Message) for more information.
 - The function passed into `call_on_message` will be called when a the bot receives a message. The return value is what the bot will respond with.
 - The framework will pass a discord.Message object as a paramater to the function provided to `call_on_message`.
 ```python
