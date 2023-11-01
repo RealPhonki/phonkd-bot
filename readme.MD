@@ -128,6 +128,6 @@ Github - https://github.com/RealPhonki
 
 Find me on the Python Discord Server - https://discord.com/invite/python
 
-Discord Tag - `Phonki#0090`
+Discord Tags - `Phonki#0090`, `slamsandwich19`
 
 Code distributed under the MIT license. See `LICENSE` for more information.
