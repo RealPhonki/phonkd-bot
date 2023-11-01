@@ -7,7 +7,7 @@ from seeing internal methods that may be confusing
 from collections.abc import Callable
 from discord import Message as message
 from inspect import signature
-import asyncio
+from asyncio import run
 
 # local import
 from .api_handler import DiscordAPIHandler
@@ -21,7 +21,7 @@ class DiscordBot:
         """
         Starts the bot client and loads dependencies.
         """
-        asyncio.run(self.api_handler.main())
+        run(self.api_handler.main())
     
     def call_on_message(self, function: Callable[[message], str]) -> None:
         """
@@ -30,13 +30,13 @@ class DiscordBot:
 
         # check if the object passed is a function
         if not callable(function):
-            self.api_handler.LOGGER.warning(f"Invalid function '{function}'")
+            self.api_handler.LOGGER.error(f"Failed to load function '{function}'")
             return
 
         # check if the function only has 1 parameter
         parameters = signature(function).parameters
         if len(parameters) != 1:
-            self.api_handler.LOGGER.warning(f"Invalid number of parameters in {function}, please only specify one.")
+            self.api_handler.LOGGER.error(f"Invalid number of parameters in {function}, please only specify one.")
             return
 
         self.api_handler.client.callables["on_message"] = function

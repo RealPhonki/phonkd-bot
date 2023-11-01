@@ -1,9 +1,9 @@
 # external imports
-import discord
+from discord import Intents
 from discord.ext import commands
-import inspect
-import json
-import sys
+from inspect import currentframe
+from json import load
+from sys import exit
 import os
 
 # local imports
@@ -22,7 +22,7 @@ class DiscordAPIHandler():
 
     """ Initializer methods """
     def get_caller_file(self) -> str:
-        fname = inspect.currentframe()
+        fname = currentframe()
         while fname.f_back:
             fname = fname.f_back
         caller_file = fname.f_globals['__file__']
@@ -36,24 +36,24 @@ class DiscordAPIHandler():
         config_path = directory + "/config.json"
         if not os.path.isfile(config_path):
             self.LOGGER.error(f"Failed to locate config.json, please create the file and try again")
-            sys.exit()
+            exit()
         else:
             try:
                 with open(config_path) as file:
-                    config_data = json.load(file)
+                    config_data = load(file)
             except Exception as e:
                 self.LOGGER.error(f"{type(e).__name__}: {e}")
-                sys.exit()
+                exit()
         
         if "token" not in config_data:
             self.LOGGER.error(f"config file missing 'token' value")
-            sys.exit()
+            exit()
 
         return config_data
 
     def load_client(self) -> commands.Bot:
         prefix = "/" if "prefix" not in self.config else self.config["prefix"]
-        client = commands.Bot(command_prefix=commands.when_mentioned_or(prefix), intents=discord.Intents.all())
+        client = commands.Bot(command_prefix=commands.when_mentioned_or(prefix), intents=Intents.all())
         client.logger = self.LOGGER
         client.callables = {}
         return client
@@ -83,4 +83,4 @@ class DiscordAPIHandler():
                 await self.client.start(self.config["token"])
             except Exception as e:
                 self.LOGGER.error(f"{type(e).__name__}: {e}")
-                sys.exit()
+                exit()

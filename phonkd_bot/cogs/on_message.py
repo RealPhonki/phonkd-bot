@@ -1,5 +1,5 @@
 from discord.ext import commands
-import traceback
+from traceback import format_exc
 
 class OnMessage(commands.Cog):
     def __init__(self, client) -> None:
@@ -18,7 +18,7 @@ class OnMessage(commands.Cog):
             await message.channel.send(response)
         except Exception as e:
             error_type = type(e).__name__
-            traceback_info = traceback.format_exc()
+            traceback_info = format_exc()
             self.client.logger.error(f"{error_type}: {e}\n{traceback_info}")
 
 # add cog extension to "client" (the bot)

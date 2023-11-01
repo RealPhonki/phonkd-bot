@@ -1,7 +1,7 @@
-import discord
+from discord import __version__
 from discord.ext import commands
-import platform
-import os
+from platform import python_version, system, release
+from os import name
 
 class LogOnReady(commands.Cog):
     def __init__(self, client) -> None:
@@ -10,9 +10,9 @@ class LogOnReady(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self) -> None:
         self.client.logger.info(f"Logged in as {self.client.user.name}")
-        self.client.logger.info(f"discord.py API version: {discord.__version__}")
-        self.client.logger.info(f"Python version: {platform.python_version()}")
-        self.client.logger.info(f"Running on: {platform.system()} {platform.release()} ({os.name})")
+        self.client.logger.info(f"discord.py API version: {__version__}")
+        self.client.logger.info(f"Python version: {python_version()}")
+        self.client.logger.info(f"Running on: {system()} {release()} ({name})")
         self.client.logger.info("-------------------")
 
 # add cog extension to "client" (the bot)
