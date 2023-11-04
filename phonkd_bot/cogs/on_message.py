@@ -15,6 +15,10 @@ class OnMessage(commands.Cog):
 
         try:
             response = self.client.callables["on_message"](message)
+
+            if response is None:
+                return
+
             await message.channel.send(response)
         except Exception as e:
             error_type = type(e).__name__
