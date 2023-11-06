@@ -19,7 +19,7 @@ Phonkd_bot is a free discord bot framework made with the intent to help beginner
 
 #### Installation
 
-Before installing pygame, you must check that Python is installed on your machine. To find out, open a command prompt (if you have Windows) or a terminal (if you have MacOS or Linux) and type this:
+Before installing phonkd_bot, you must check that Python is installed on your machine. To find out, open a command prompt (if you have Windows) or a terminal (if you have MacOS or Linux) and type this:
 
 ```sh
 python --version
