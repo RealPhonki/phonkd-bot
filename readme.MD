@@ -13,7 +13,7 @@
 
 </div>
 
-Phonkd_bot is a free discord bot framework made with the intent to help beginner programmers learn python. It allows you to take console-based programs and convert them into discord bots by substiting the `input` and `print` functions. It takes the [Discord library](https://discordpy.readthedocs.io/en/stable/api.html) and abstracts all of the complex functionality to make writing these programs simpler.
+Phonkd_bot is a free discord bot framework made with the intent to help beginner programmers learn python. It allows you to take console-based programs and convert them into discord bots by substituting the `input` and `print` functions. It takes the [Discord library](https://discordpy.readthedocs.io/en/stable/api.html) and abstracts all of the complex functionality to make writing these programs simpler.
 
 ## Setup
 
