@@ -1,8 +1,6 @@
 # phonkd_bot - Builtin methods
 <details>
   <summary><h5>phonkd_bot.call_on_message(message: Callable[[phonkd_bot.message], str])</h5></summary>
-  <br>
-  
   Tells the framework what function to call when it receives a message. The framework will pass a [discord message object](https://discordpy.readthedocs.io/en/stable/api.html#discord.Message) when it invokes the function. 
 </details>
 
