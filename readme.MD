@@ -71,7 +71,7 @@ Create a file named `config.json` in the same directory as your script. Copy and
 <span style="color:rgb(255, 120, 120); font-weight: light; font-style: italic; font-size:0.8em">This token is not real, you will need to replace it with your own.</span>
 
 ## Help
-If you want to use this framework check out the reference documentation on the [docs page](https://github.com/RealPhonki/phonkd-bot/docs/api_reference.md). If you find issues with this library please reach out to me.
+If you want to use this framework check out the reference documentation on the [docs page](https://github.com/RealPhonki/phonkd-bot/blob/main/docs/api_reference.md). If you find issues with this library please reach out to me.
 
 ## Meta
 Gmail - phonkibusiness@gmail.com
