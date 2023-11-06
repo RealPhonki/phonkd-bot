@@ -25,7 +25,7 @@ Before installing phonkd_bot, you must check that Python is installed on your ma
 python --version
 ```
 
-If a message such as "Python 3.8.10" appears, it means that Python is correctly installed. If an error message appears, it means that it is not installed yet. You must then go to the [official website](https://www.python.org/) and install it.
+If a message such as "`Python 3.8.10`" appears, it means that Python is correctly installed. If an error message appears, it means that it is not installed yet. You must then go to the [official website](https://www.python.org/) and install it.
 
 Once Python is installed, you have to perform a final check: you have to see if pip is installed. Generally, pip is pre-installed with Python but we are never sure. Same as for Python, type the following command:
 
@@ -33,7 +33,7 @@ Once Python is installed, you have to perform a final check: you have to see if 
 pip --version
 ```
 
-If a message such as "pip 20.0.2 from /usr/lib/python3/dist-packages/pip (python 3.8)" appears, you are ready to install the library. To install it, enter this command:
+If a message such as "`pip 20.0.2 from /usr/lib/python3/dist-packages/pip (python 3.8)`" appears, you are ready to install the library. To install it, enter this command:
 
 ```sh
 pip install phonkd_bot
