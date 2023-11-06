@@ -1,61 +1,57 @@
 # phonkd_bot - Builtin methods
 <details>
   <summary><h5>phonkd_bot.call_on_message(message: Callable[[phonkd_bot.message], str])</h5></summary>
+
   Tells the framework what function to call when it receives a message. The framework will pass a [discord message object](https://discordpy.readthedocs.io/en/stable/api.html#discord.Message) when it invokes the function. 
+  
+</details>
+<details>
+  <summary><h5>phonkd_bot.start()</h5></summary>
+
+  Tells the framework to connect to the server, this method takes no parameters.
 </details>
 
-### Responding to messages
-- Adding the `phonkd_bot.message` type hint to the `message` parameter allows your code editor to autocomplete attributes of the discord [`Message`](https://discordpy.readthedocs.io/en/stable/api.html#discord.Message) object, see their [documentation](https://discordpy.readthedocs.io/en/stable/api.html#discord.Message) for more information.
-- The function passed into `call_on_message` will be called when a the bot receives a message. The return value is what the bot will respond with.
-- The framework will pass a discord.Message object as a paramater to the function provided to `call_on_message`.
-```python
-def on_message(message: phonkd_bot.message):
-    return "Hello!"
+<details>
+  <summary><h5>phonkd_bot.logger</h5></summary>
 
-phonkd_bot.call_on_message(on_message)
-```
+  phonkd_bot has a `logger` attribute with a few internal methods that will help you with debuggin your script. These methods are:
+  - `logger.info`
+  - `logger.warning`
+  - `logger.error`
+  - `logger.critical`
 
-### Activating the bot
+  Here is an example script.
 
-```python
-phonkd_bot.start()
-```
+  ```python
+  import phonkd_bot
 
-### Logging Information
+  phonkd_bot.logger.info("info message")
+  phonkd_bot.logger.warning("warning message")
+  phonkd_bot.logger.error("error message")
+  phonkd_bot.logger.critical("critical error message")
+  ```
 
-The `DiscordBot` class has a sub class called `logger`. The `logger` class has multiple methods that will help you debug or catch errors in your script. These methods are:
-- `logger.info`
-- `logger.warning`
-- `logger.error`
-- `logger.critical`
+  This is the result.
 
-Here is an example script.
+  ![image of terminal containing logged information](https://i.imgur.com/wiIKZEQ.png)
 
-```python
-import phonkd_bot
+</details>
 
-phonkd_bot.logger.info("info message")
-phonkd_bot.logger.warning("warning message")
-phonkd_bot.logger.error("error message")
-phonkd_bot.logger.critical("critical error message")
-```
+<details>
+  <summary><h5>Example bot script</h5></summary>
 
-This is the result.
+  ```python
+  import phonkd_bot
 
-![image of terminal containing logged information](https://i.imgur.com/wiIKZEQ.png)
+  def on_message(message: phonkd_bot.message):
+      return "Hello!"
 
-### Example Discord Bot Script
+  phonkd_bot.call_on_message(on_message)
+  phonkd_bot.start()
+  ```
 
-```python
-import phonkd_bot
+  This is the result.
 
-def on_message(message: phonkd_bot.message):
-    return "Hello!"
+  ![image of discord bot saying hello](https://i.imgur.com/4hcMWHE.png)
 
-phonkd_bot.call_on_message(on_message)
-phonkd_bot.start()
-```
-
-This is the result.
-
-![image of discord bot saying hello](https://i.imgur.com/4hcMWHE.png)
+</details>
