@@ -14,7 +14,7 @@
 <details>
   <summary><h5>phonkd_bot.logger</h5></summary>
 
-  phonkd_bot has a `logger` attribute with a few internal methods that will help you with debuggin your script. These methods are:
+  phonkd_bot has a `logger` attribute with a few internal methods that will help you with debugging your script. These methods are:
   - `logger.info`
   - `logger.warning`
   - `logger.error`
