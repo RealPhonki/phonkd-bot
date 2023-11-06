@@ -36,7 +36,7 @@ def call_on_message(function: Callable[[message], str]) -> None:
     try:
         # check if the object passed is a function
         if not callable(function):
-            raise ValueError(f"Failed to set function: `{function.__name__}`, make sure that it is a callable object.")
+            raise ValueError(f"Failed to set function: `{function}`, make sure that it is a callable object.")
         
         # check if the function only has 1 parameter
         parameters = signature(function).parameters

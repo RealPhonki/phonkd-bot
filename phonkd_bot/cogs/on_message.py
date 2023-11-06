@@ -1,5 +1,4 @@
 from discord.ext import commands
-from traceback import format_exc
 
 class OnMessage(commands.Cog):
     def __init__(self, client) -> None:
@@ -7,23 +6,25 @@ class OnMessage(commands.Cog):
     
     @commands.Cog.listener()
     async def on_message(self, message) -> None:
-        if self.client.callables["on_message"] is None:
+        user_function = self.client.callables["on_message"]
+        
+        if user_function is None:
             return
     
         if message.author == self.client.user:
             return
 
         try:
-            response = self.client.callables["on_message"](message)
+            response = user_function(message)
 
             if response is None:
                 return
 
             await message.channel.send(response)
+
         except Exception as e:
             error_type = type(e).__name__
-            traceback_info = format_exc()
-            self.client.logger.error(f"{error_type}: {e}\n{traceback_info}")
+            self.client.logger.error(f"{error_type} in function '{user_function.__name__}': {e}")
 
 # add cog extension to "client" (the bot)
 # NOTE: THIS CODE RUNS FROM THE DIRECTORY THAT "main.py" IS IN
