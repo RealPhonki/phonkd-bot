@@ -7,30 +7,42 @@
 ██║     ██║  ██║╚██████╔╝██║ ╚████║██║  ██╗██████╔╝    ██████╔╝╚██████╔╝   ██║   
 ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝╚═════╝     ╚═════╝  ╚═════╝    ╚═╝   
 ---------------------------------------------------------------------------------
-A framework that makes discord bot programming easy
 </pre>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 </div>
 
-## Installation and setup
+Phonkd_bot is a free discord bot framework made with the intent to help beginner programmers learn python. It allows you to take console-based programs and convert them into discord bots by substiting the `input` and `print` functions. It takes the [Discord library](https://discordpy.readthedocs.io/en/stable/api.html) and abstracts all of the complex functionality to make writing these programs simpler.
 
-Run this command in your terminal, it will download the framework along with the [discord](https://discordpy.readthedocs.io/en/stable/api.html) and [asyncio](https://docs.python.org/3/library/asyncio.html) libraries.
+<span style="color:rgb(255, 80, 80); font-weight:bold;">THE ONLY ENVIRONMENTS THIS FRAMEWORK IS KNOWN TO SUPPORT ARE REPLIT AND LOCAL INSTALLATIONS OF PYTHON 3, DO NOT USE OTHER SETUPS.</span>
+
+## Setup
+
+#### Installation
+
+Before installing pygame, you must check that Python is installed on your machine. To find out, open a command prompt (if you have Windows) or a terminal (if you have MacOS or Linux) and type this:
 
 ```shell
-pip3 install phonkd_bot
+python --version
 ```
 
-Create a file named `config.json` in the same directory as your script. Copy and paste your bot token (from [discord.com/developers](https://discord.com/developers/applications)) into the file. The prefix field is optional.
-```json
-{
-    "prefix": "/",
-    "token": "YOUR BOT TOKEN HERE"
-}
+If a message such as "Python 3.8.10" appears, it means that Python is correctly installed. If an error message appears, it means that it is not installed yet. You must then go to the [official website](https://www.python.org/) and install it.
+
+Once Python is installed, you have to perform a final check: you have to see if pip is installed. Generally, pip is pre-installed with Python but we are never sure. Same as for Python, type the following command:
+
+```shell
+pip --version
 ```
 
-## Creating a Discord Bot
+If a message such as "pip 20.0.2 from /usr/lib/python3/dist-packages/pip (python 3.8)" appears, you are ready to install the library. To install it, enter this command:
+
+```shell
+pip install phonkd_bot
+```
+
+#### Creating a Discord Bot
+Now you will need to create a discord bot, to do so, follow these instructions:
 1. Go to [discord.com/developers/applications](https://discord.com/developers/applications)
 2. Click `New Application`
 3. Give the bot a name, agree to the terms, then click `Create`
@@ -47,79 +59,19 @@ Create a file named `config.json` in the same directory as your script. Copy and
 14. Make sure `Administrator` is checked and click `Authorize`
 15. Do the captcha (if one appears) and close the window once you see `"Success!"` on your screen
 
-## Usage Example
+#### Setting up the environment
 
-### Importing the bot
+Create a file named `config.json` in the same directory as your script. Copy and paste your bot token (from [discord.com/developers](https://discord.com/developers/applications)) into the file, it should look something like this:
 
-```python
-import phonkd_bot
+```json
+{
+    "token": "MTE2nze0MDYzmzk5MTk5MTMxNg.Gm0Mnf.kmsdIjbvOZFMIs94ipxOCt70aLs3lKQsl0VaPE"
+}
 ```
+<span style="color:rgb(255, 120, 120); font-weight: light; font-style: italic; font-size:0.8em">This token is not real, you will need to replace it with your own.</span>
 
-### Creating a bot instance
-
-```python
-bot = phonkd_bot.DiscordBot()
-```
-
-### Responding to messages
-- Adding the `phonkd_bot.message` type hint to the `message` parameter allows your code editor to autocomplete attributes of the discord [`Message`](https://discordpy.readthedocs.io/en/stable/api.html#discord.Message) object, see their [documentation](https://discordpy.readthedocs.io/en/stable/api.html#discord.Message) for more information.
-- The function passed into `call_on_message` will be called when a the bot receives a message. The return value is what the bot will respond with.
-- The framework will pass a discord.Message object as a paramater to the function provided to `call_on_message`.
-```python
-def on_message(message: phonkd_bot.message):
-    return "Hello!"
-
-bot.call_on_message(on_message)
-```
-
-### Activating the bot
-
-```python
-bot.start()
-```
-
-### Logging Information
-
-The `DiscordBot` class has a sub class called `logger`. The `logger` class has multiple methods that will help you debug or catch errors in your script. These methods are:
-- `logger.info`
-- `logger.warning`
-- `logger.error`
-- `logger.critical`
-
-Here is an example script.
-
-```python
-import phonkd_bot
-
-bot = DiscordBot()
-
-bot.logger.info("info message")
-bot.logger.warning("warning message")
-bot.logger.error("error message")
-bot.logger.critical("critical error message")
-```
-
-This is the result.
-
-![image of terminal containing logged information](https://i.imgur.com/wiIKZEQ.png)
-
-### Example Discord Bot Script
-
-```python
-import phonkd_bot
-
-bot = phonkd_bot.DiscordBot()
-
-def on_message(message: phonkd_bot.message):
-    return "Hello!"
-
-bot.call_on_message(on_message)
-bot.start()
-```
-
-This is the result.
-
-![image of discord bot saying hello](https://i.imgur.com/4hcMWHE.png)
+## Help
+If you want to use this framework check out the reference documentation on the [docs page](https://github.com/RealPhonki/phonkd-bot/docs/api_reference.md). If you find issues with this library please reach out to me.
 
 ## Meta
 Gmail - phonkibusiness@gmail.com
