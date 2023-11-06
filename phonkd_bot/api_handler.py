@@ -12,9 +12,9 @@ from phonkd_bot.logger import logger
 class DiscordAPIHandler():
     def __init__(self) -> None:
         # aliases
-        self.LOGGER = logger()
         self.CALLER_FILE = self.get_caller_file()
         self.CALLER_DIRECTORY = self.get_caller_directory(self.CALLER_FILE)
+        self.logger = logger()
 
         # attributes
         self.config = self.load_config_file(self.CALLER_DIRECTORY)
@@ -35,18 +35,18 @@ class DiscordAPIHandler():
     def load_config_file(self, directory: str) -> dict:
         config_path = directory + "/config.json"
         if not os.path.isfile(config_path):
-            self.LOGGER.error(f"Failed to locate config.json, please create the file and try again")
+            self.logger.error(f"Failed to locate config.json, please create the file and try again")
             exit()
         else:
             try:
                 with open(config_path) as file:
                     config_data = load(file)
             except Exception as e:
-                self.LOGGER.error(f"{type(e).__name__}: {e}")
+                self.logger.error(f"{type(e).__name__}: {e}")
                 exit()
         
         if "token" not in config_data:
-            self.LOGGER.error(f"config file missing 'token' value")
+            self.logger.error(f"config file missing 'token' value")
             exit()
 
         return config_data
@@ -54,7 +54,7 @@ class DiscordAPIHandler():
     def load_client(self) -> commands.Bot:
         prefix = "/" if "prefix" not in self.config else self.config["prefix"]
         client = commands.Bot(command_prefix=commands.when_mentioned_or(prefix), intents=Intents.all())
-        client.logger = self.LOGGER
+        client.logger = self.logger
         client.callables = {}
         return client
 
@@ -69,11 +69,11 @@ class DiscordAPIHandler():
                 try:
                     # load the cog and log the information
                     await self.client.load_extension(f"phonkd_bot.cogs.{extension}")
-                    self.LOGGER.info(f"Loaded extension '{extension}'")
+                    self.logger.info(f"Loaded extension '{extension}'")
                 except Exception as e:
                     # print the exception if there is one
                     exception = f"{type(e).__name__}: {e}"
-                    self.LOGGER.warning(f"Failed to load extension {extension}\n{exception}")
+                    self.logger.warning(f"Failed to load extension {extension}\n{exception}")
 
     async def main(self) -> None:
         async with self.client:
@@ -82,5 +82,5 @@ class DiscordAPIHandler():
             try:
                 await self.client.start(self.config["token"])
             except Exception as e:
-                self.LOGGER.error(f"{type(e).__name__}: {e}")
+                self.logger.error(f"{type(e).__name__}: {e}")
                 exit()
