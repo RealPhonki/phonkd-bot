@@ -15,6 +15,8 @@
 
 # WARNING, THIS REPOSITORY IS NO LONGER MAINTAINED
 
+# THIS PROJECT NO LONGER WORKS WITH THE CURRENT DISCORD API
+
 Phonkd_bot is a free discord bot framework made with the intent to help beginner programmers learn python. It allows you to take console-based programs and convert them into discord bots by substituting the `input` and `print` functions. It takes the [Discord library](https://discordpy.readthedocs.io/en/stable/api.html) and abstracts all of the complex functionality to make writing these programs simpler.
 
 ## Setup
@@ -72,14 +74,3 @@ Create a file named `config.json` in the same directory as your script. Copy and
 
 ## Help
 If you want to use this framework check out the reference documentation on the [docs page](https://github.com/RealPhonki/phonkd-bot/blob/main/docs/api_reference.md). If you find issues with this library please reach out to me.
-
-## Meta
-Gmail - phonkibusiness@gmail.com
-
-Github - https://github.com/RealPhonki
-
-Find me on the Python Discord Server - https://discord.com/invite/python
-
-Discord Tags - `realphonki`
-
-Code distributed under the MIT license. See `LICENSE` for more information.
